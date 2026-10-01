@@ -1,0 +1,74 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "BrainTumorVision: Backend",
+      "type": "shell",
+      "command": "& '${workspaceFolder}\\.venv\\Scripts\\python.exe' -m uvicorn main:app --host 0.0.0.0 --port 8000 --reload",
+      "options": {
+        "cwd": "${workspaceFolder}\\backend"
+      },
+      "isBackground": true,
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "group": "BrainTumorVision Backend"
+      }
+    },
+    {
+      "label": "BrainTumorVision: Check MongoDB Atlas connection",
+      "type": "shell",
+      "command": "& '${workspaceFolder}\\.venv\\Scripts\\python.exe' check_mongodb.py",
+      "options": {
+        "cwd": "${workspaceFolder}\\backend"
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "group": "BrainTumorVision MongoDB"
+      }
+    },
+    {
+      "label": "BrainTumorVision: Frontend",
+      "type": "shell",
+      "command": "npm run dev",
+      "options": {
+        "cwd": "${workspaceFolder}\\frontend"
+      },
+      "isBackground": true,
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "group": "BrainTumorVision Frontend"
+      }
+    },
+    {
+      "label": "BrainTumorVision: MongoDB Atlas monitor",
+      "type": "shell",
+      "command": "while ($true) { try { $health = Invoke-RestMethod 'http://localhost:8000/api/health'; Write-Host \"$(Get-Date -Format 'HH:mm:ss') MongoDB Atlas: $($health.mongodb)\" -ForegroundColor Green } catch { Write-Host \"$(Get-Date -Format 'HH:mm:ss') Backend unavailable\" -ForegroundColor Red }; Start-Sleep -Seconds 10 }",
+      "options": {
+        "cwd": "${workspaceFolder}\\backend"
+      },
+      "isBackground": true,
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "group": "BrainTumorVision MongoDB"
+      }
+    },
+    {
+      "label": "BrainTumorVision: Start all services",
+      "dependsOn": [
+        "BrainTumorVision: Backend",
+        "BrainTumorVision: Frontend",
+        "BrainTumorVision: MongoDB Atlas monitor"
+      ],
+      "dependsOrder": "parallel",
+      "problemMatcher": []
+    }
+  ]
+}

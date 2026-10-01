@@ -1,0 +1,152 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 224 71% 4%;
+    --foreground: 213 31% 91%;
+
+    --card: 224 71% 7%;
+    --card-foreground: 213 31% 91%;
+
+    --popover: 224 71% 7%;
+    --popover-foreground: 213 31% 91%;
+
+    --primary: 199 89% 48%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 222 47% 11%;
+    --secondary-foreground: 213 31% 91%;
+
+    --muted: 223 47% 11%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 217 33% 17%;
+    --accent-foreground: 213 31% 91%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 199 89% 48%;
+
+    --radius: 0.75rem;
+  }
+}
+
+body {
+  color: #F8FAFC;
+  background-color: #060A14;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  overflow-x: hidden;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  border-radius: .5rem;
+  background: #0ea5e9;
+  color: #fff;
+  padding: .65rem 1rem;
+  font-size: .875rem;
+  font-weight: 600;
+}
+.btn:hover { background: #0284c7; }
+
+/* Custom Medical Imaging Dark Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0A0F1D;
+}
+::-webkit-scrollbar-thumb {
+  background: #1E293B;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #0EA5E9;
+}
+
+/* Glassmorphism helpers */
+.glass-panel {
+  background: rgba(13, 20, 38, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(30, 41, 59, 0.7);
+}
+
+.glass-panel-glow {
+  background: rgba(13, 20, 38, 0.85);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(14, 165, 233, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37), 0 0 15px -3px rgba(14, 165, 233, 0.15);
+}
+
+.wellness-light {
+  border-radius: 1rem;
+  background: #f1f5f9;
+  color: #0f172a;
+  padding: 1rem;
+}
+.wellness-light .wellness-card {
+  background: #ffffff !important;
+  border-color: #cbd5e1 !important;
+  color: #0f172a;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, .06);
+}
+.wellness-light .wellness-card .text-white,
+.wellness-light .wellness-card .text-slate-100,
+.wellness-light .wellness-card .text-slate-200,
+.wellness-light .wellness-card .text-slate-300 { color: #0f172a !important; }
+.wellness-light .wellness-card .text-slate-400 { color: #475569 !important; }
+.wellness-light .wellness-card .text-slate-500,
+.wellness-light .wellness-card .text-slate-600 { color: #64748b !important; }
+.wellness-light .wellness-card .bg-\[\#080e19\],
+.wellness-light .wellness-card .bg-\[\#0b1220\] { background: #f8fafc !important; }
+.wellness-light .wellness-card input,
+.wellness-light .wellness-card select { background: #f8fafc !important; color: #0f172a !important; border-color: #cbd5e1 !important; }
+.wellness-light [class*="text-slate-"] { color: #334155 !important; }
+.wellness-light [class*="text-slate-500"],
+.wellness-light [class*="text-slate-600"] { color: #526174 !important; }
+.wellness-light [class*="text-sky-"],
+.wellness-light [class*="text-cyan-"] { color: #0369a1 !important; }
+.wellness-light [class*="text-emerald-"] { color: #047857 !important; }
+.wellness-light [class*="text-violet-"] { color: #6d28d9 !important; }
+.wellness-light [class*="text-amber-"] { color: #92400e !important; }
+.wellness-light [class*="text-rose-"] { color: #be123c !important; }
+.wellness-light [class*="border-slate-700"],
+.wellness-light [class*="border-slate-800"] { border-color: #cbd5e1 !important; }
+.wellness-light [class*="bg-[#080e19]"],
+.wellness-light [class*="bg-[#0b1220]"],
+.wellness-light [class*="bg-[#0b1726]"],
+.wellness-light [class*="bg-slate-900/60"] { background-color: #f8fafc !important; }
+.wellness-light button:not([class*="bg-sky-500"]):not([class*="bg-rose-"]) { color: #334155; }
+.wellness-light .wellness-card button:not([class*="bg-sky-500"]) { background-color: #f8fafc; border-color: #cbd5e1; }
+.wellness-light .wellness-meal-card .text-white { color: #fff !important; }
+.wellness-light .wellness-meal-card .bg-slate-950\/60 { background-color: rgb(2 6 23 / .72) !important; }
+.wellness-light .wellness-export-bar { background: #fff !important; border-color: #cbd5e1 !important; }
+.wellness-light .wellness-input::placeholder { color: #64748b !important; }
+.wellness-page button:focus-visible,
+.wellness-page select:focus-visible,
+.wellness-page input:focus-visible { outline: 2px solid #38bdf8; outline-offset: 2px; }
+.wellness-meal-card { animation: wellness-rise .45s ease both; }
+.wellness-meal-card:nth-child(2) { animation-delay: 45ms; }
+.wellness-meal-card:nth-child(3) { animation-delay: 90ms; }
+.wellness-meal-card:nth-child(4) { animation-delay: 135ms; }
+.wellness-meal-card:nth-child(5) { animation-delay: 180ms; }
+.wellness-meal-card:nth-child(6) { animation-delay: 225ms; }
+@keyframes wellness-rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+@media (prefers-reduced-motion: reduce) { .wellness-meal-card { animation: none; transition: none; } }
+
+/* Medical Crosshair grid effect */
+.medical-grid {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(30, 41, 59, 0.25) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(30, 41, 59, 0.25) 1px, transparent 1px);
+}
